@@ -1,0 +1,19 @@
+<p>
+  <strong>Title:</strong>
+  <%= @listing.title %>
+</p>
+<p>
+	<strong>Category:</strong>
+	<% if @listing.category %>
+	<%= link_to @listing.category.name, @listing.category %>
+	<% else %>
+	   none
+	<% end %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @listing.description %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-default' %>
+<%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

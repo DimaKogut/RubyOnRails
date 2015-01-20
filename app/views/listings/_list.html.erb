@@ -1,0 +1,23 @@
+<% if listings.empty? %>
+ No listings to display! Go <%= link_to 'create one', new_listing_path %>.
+<% else %>
+  <table class="table table-striped">
+    <tbody>
+      <% listings.each do |listing| %>
+        <tr>
+          <td><h3><%= listing.title%></h3> <br>
+          <strong>Description:</strong>
+             <%= listing.description %><br><br>
+            <strong>Category:</strong>
+             <%= link_to listing.category.name, listing.category%>
+       
+             </td>
+          </td>
+         <p>
+            
+          </p>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
