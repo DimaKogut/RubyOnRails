@@ -1,16 +1,26 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy, :search]
+
+
 
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.search(params[:search])
+    if params[:filter].nil?
+      @listings = Listing.all
+      else
+        if params[:filter] == "Date" = Listing.all 
+        else
+          @listings = @listings.sort_by(&:title).each do |Listing|
+        end
   end
+ 
 
   # GET /listings/1
   # GET /listings/1.json
   def show
-   
+
   end
 
   # GET /listings/new
@@ -20,6 +30,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
+   
   end
 
   # POST /listings
@@ -70,6 +81,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :description, :category_id, :price)
+      params.require(:listing).permit(:title, :description, :category_id, :search)
     end
 end
