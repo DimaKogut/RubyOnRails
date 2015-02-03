@@ -7,13 +7,6 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @listings = Listing.search(params[:search])
-    if params[:filter].nil?
-      @listings = Listing.all
-      else
-        if params[:filter] == "Date" = Listing.all 
-        else
-          @listings = @listings.sort_by(&:title).each do |Listing|
-        end
   end
  
 

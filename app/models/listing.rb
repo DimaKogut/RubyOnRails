@@ -6,7 +6,7 @@ class Listing < ActiveRecord::Base
 
   def self.search(search)
 	 if search
-	    where('name LIKE ?', "%#{search}%")
+	    where('description || title LIKE ?', "%#{search}%")
 	  else
 		Listing.all
 	  end
