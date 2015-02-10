@@ -1,0 +1,23 @@
+<% if @index.empty? %>
+ No listings with search! Go <%= link_to 'show all', listing_path %>.
+<% else %>
+  <table class="table table-striped">
+    <tbody>
+      <% @index.each do |f| %>
+        <tr>
+          <td><div class='pull-left'><h3><%= f.title%></h3></div><div class='pull-right'><h6><%= f.created_at.strftime("due on %B %d at %I:%M %p") %></h6></div>
+          <div class='Description'><strong>Description:</strong>
+             <%= f.description %></div><br><br>
+            <strong>Category:</strong>
+             <%= link_to f.category.name, f.category%>
+       
+             </td>
+          </td>
+         <p>
+            
+          </p>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

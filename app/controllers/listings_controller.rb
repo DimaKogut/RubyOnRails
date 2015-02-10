@@ -7,8 +7,20 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @listings = Listing.search(params[:search])
+
+      respond_to do |format|
+      format.html
+      format.js { render :action => 'onclick.js.erb'}
+    end
+
+    if !(@listings == 0)
+      @index = @listings
+    end
   end
  
+  def hello
+  
+  end
 
   # GET /listings/1
   # GET /listings/1.json

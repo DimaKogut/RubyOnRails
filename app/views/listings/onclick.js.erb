@@ -1,0 +1,9 @@
+$(document).ready(function(){
+	// console.log('Hello World');
+	$('#click').click(function(){
+		var s = document.getElementById("input").value;
+		$.get($("#search").attr("action"), $("#search").serialize(), null, "script");
+    	console.log(s);
+    	return false;
+	});
+});
