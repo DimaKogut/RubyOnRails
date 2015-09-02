@@ -1,16 +1,31 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy, :search]
+
+
 
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.search(params[:search])
+
+      respond_to do |format|
+      format.html
+      format.js { render :action => 'onclick.js.erb'}
+    end
+
+    if !(@listings == 0)
+      @index = @listings
+    end
+  end
+ 
+  def hello
+  
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
-   
+
   end
 
   # GET /listings/new
@@ -20,6 +35,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
+   
   end
 
   # POST /listings
@@ -70,6 +86,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :description, :category_id, :price)
+      params.require(:listing).permit(:title, :description, :category_id, :search)
     end
 end

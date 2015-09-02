@@ -10,6 +10,7 @@
     </div>
   <% end %>
 
+
   <div class="form-group">
     <%= f.label :category %>
     <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: "Please select..."},{ class: 'form-control'} %>
@@ -25,4 +26,5 @@
   <%= f.submit class: 'btn btn-primary' %>
   <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
 <% end %>
+
 
